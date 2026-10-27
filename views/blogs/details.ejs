@@ -10,7 +10,11 @@
     <div class="content">
       <p><%= blog.body %></p>
     </div>
-    <a class="delete" data-doc="<%= blog._id %>" >Delete</a>   
+    <p class="blog-author">By <%= blog.author || 'Unknown author' %></p>
+    <p class="blog-date">Created: <%= blog.createdAt.toLocaleString() %></p>
+    <a class="delete" data-doc="<%= blog._id %>" >
+      <img src="/trashcan.svg" alt="delete icon">
+    </a>   
   </div>
 
   <script>

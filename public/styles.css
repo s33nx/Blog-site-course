@@ -64,10 +64,56 @@
     .blogs a:hover h3{
       color: crimson;
     }
+    .blogs .blog-author{
+      margin-top: 12px;
+    }
+    .blog-filters{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      gap: 12px;
+      margin: 0 20px 32px;
+    }
+    .blog-filters label{
+      font-size: 0.9em;
+      color: #555;
+    }
+    .blog-filters input,
+    .blog-filters select,
+    .blog-filters button{
+      box-sizing: border-box;
+      min-height: 38px;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font: inherit;
+    }
+    .blog-filters button{
+      border: 0;
+      background: crimson;
+      color: white;
+      cursor: pointer;
+    }
+    .blog-filters .clear-filters{
+      padding: 9px 4px;
+      color: #777;
+    }
     
     /* details styles */
     .details{
       position: relative;
+    }
+    .blog-author{
+      margin-top: 32px;
+      text-align: right;
+      color: #777;
+      font-style: italic;
+    }
+    .blog-date{
+      margin-top: 8px;
+      text-align: right;
+      color: #777;
+      font-style: italic;
     }
     .delete{
       position: absolute;

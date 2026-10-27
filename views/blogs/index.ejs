@@ -4,13 +4,36 @@
 <body>
 
     <%- include('../../partials/nav.ejs') %>
-   
+
+        <form class="blog-filters" action="/blogs" method="GET">
+                <label for="search">Search title or author</label>
+                <input id="search" type="search" name="q" placeholder="Type to search..." value="<%= searchTerm || '' %>">
+
+                <label for="date">Created on</label>
+                <input id="date" type="date" name="date" value="<%= selectedDate || '' %>">
+
+                <label for="sort">Sort by</label>
+                <select id="sort" name="sort">
+                        <option value="newest" <%= selectedSort === 'newest' ? 'selected' : '' %>>Newest</option>
+                        <option value="oldest" <%= selectedSort === 'oldest' ? 'selected' : '' %>>Oldest</option>
+                        <option value="title-asc" <%= selectedSort === 'title-asc' ? 'selected' : '' %>>Title A–Z</option>
+                        <option value="title-desc" <%= selectedSort === 'title-desc' ? 'selected' : '' %>>Title Z–A</option>
+                        <option value="author-asc" <%= selectedSort === 'author-asc' ? 'selected' : '' %>>Author A–Z</option>
+                        <option value="author-desc" <%= selectedSort === 'author-desc' ? 'selected' : '' %>>Author Z–A</option>
+                </select>
+
+                <button type="submit">Apply filters</button>
+                <a class="clear-filters" href="/blogs">Clear</a>
+        </form>
+
     <div class="blogs content">
         <% if (blogs.length > 0) { %>
             <% blogs.forEach((blog) => { %>
                 <a href="/blogs/<%= blog._id %>">
                     <h3 class="title"><%= blog.title %></h3>
                     <p class="snippet"><%= blog.snippet %></p>
+                    <p class="blog-author">By <%= blog.author || 'Unknown author' %></p>
+                    <p class="blog-date">Created: <%= blog.createdAt.toLocaleString() %></p>
                 </a>
             <% }); %>
         <% }else{ %>
